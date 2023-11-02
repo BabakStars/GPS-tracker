@@ -1,11 +1,7 @@
 
 #include <TinyGPS++.h>
 #include <SoftwareSerial.h>
-/*
-   This sample sketch demonstrates the normal use of a TinyGPS++ (TinyGPSPlus) object.
-   It requires the use of SoftwareSerial, and assumes that you have a
-   9600-baud serial GPS device hooked up on pins 4(rx) and 3(tx).
-*/
+
 static const int RXPin = 3, TXPin = 4;
 static const uint32_t GPSBaud = 9600;
 
@@ -80,11 +76,11 @@ void displayInfo()
 
       String number = txt1.substring(9,22);
       Serial.println(number);
- if(number == "+989900207639")
+ if(number == "Your phone number")
  {    
     if(txt1.indexOf("Direction")!= -1)
     {
-      gsm.println("AT+CMGS=\"09137392795\"");
+      gsm.println("AT+CMGS=\"Your phone number\"");
                 delay(200);
                 gsm.println(link);
                 delay(200);
@@ -96,8 +92,8 @@ void displayInfo()
  if(Serial.available())
   {
     txt2 = Serial.readString();
-    //gsm.println("AT+CMGS=\"09137392795\"");
-    gsm.println("AT+CMGS=\"09137392795\"");
+    
+    gsm.println("AT+CMGS=\"Your phone number\"");  //Your phone number
     delay(200);
     gsm.println(txt2);
     delay(200);
